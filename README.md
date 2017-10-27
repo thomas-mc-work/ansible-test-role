@@ -59,4 +59,4 @@ These are defined in the script and thus overridden:
 
 ## Thanks to
 
-… @berlic for [this inspiration](https://stackoverflow.com/a/38419466/2854723)
+… [Konstantin Suvorov aka @berlic](https://github.com/berlic) for [this inspiration](https://stackoverflow.com/a/38419466/2854723)
