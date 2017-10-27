@@ -52,10 +52,10 @@ These are defined in the script and thus overridden:
 
 ## Roadmap
 
-- enable command completion
-- enabled definition of a custom vagrant image
-- check role existence before starting the vagrant machine
-- add system tests
+- [#1: enable command completion](https://github.com/thomas-mc-work/ansible-test-role/issues/1)
+- [#2: enabled definition of a custom vagrant image](https://github.com/thomas-mc-work/ansible-test-role/issues/2)
+- [#3: check role existence before starting the vagrant machine](https://github.com/thomas-mc-work/ansible-test-role/issues/3)
+- [#4: add system tests](https://github.com/thomas-mc-work/ansible-test-role/issues/4)
 
 ## Thanks to
 
