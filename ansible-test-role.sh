@@ -77,16 +77,6 @@ ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-
     - ${role_name}
 END
 
-ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-args "-o StrictHostKeyChecking=no" \
-  -i "$ANSIBLE_INVENTORY" "$@" /dev/stdin <<END
----
-- hosts: ${machine_ip}
-  become: yes
-
-  roles:
-    - ${role_name}
-END
-
 # clean up
 rm -f "$ANSIBLE_INVENTORY"
 
