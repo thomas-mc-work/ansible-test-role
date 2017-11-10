@@ -22,7 +22,6 @@ echo "Trying to apply role '${role_name}' ..."
 
 # define the overridable ansible roles path
 if [ -z "${ANSIBLE_ROLES_PATH:+x}" ]; then
-    echo "var is unset"
     export ANSIBLE_ROLES_PATH="$(pwd)/roles"
 fi
 
@@ -54,6 +53,7 @@ if ! vagrant ssh -c exit 2> /dev/null; then
 fi
 
 machine_ip=$(vagrant ssh-config | grep -i HostName | cut -d' ' -f4)
+machine_ssh_port=$(vagrant ssh-config | grep -i Port | cut -d' ' -f4)
 machine_private_key=$(vagrant ssh-config | grep -i IdentityFile | cut -d' ' -f4)
 echo "machine has booted: ${machine_ip}"
 
@@ -63,7 +63,7 @@ export ANSIBLE_RETRY_FILES_ENABLED="False"
 export ANSIBLE_INVENTORY=$(mktemp)
 cat > "$ANSIBLE_INVENTORY" <<END
 [vagrant]
-$machine_ip ansible_user=vagrant ansible_ssh_private_key_file=${machine_private_key}
+$machine_ip ansible_port=${machine_ssh_port} ansible_user=vagrant ansible_ssh_private_key_file=${machine_private_key}
 END
 
 # create temporary playbook.yml
@@ -82,7 +82,7 @@ ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-
   -i "$ANSIBLE_INVENTORY" "$ansible_playbook"
 
 # clean up
-rm -f "$ANSIBLE_INVENTORY"
+rm -f "$ANSIBLE_INVENTORY" "$ansible_playbook"
 
 vagrant destroy -f
 sc=$?
