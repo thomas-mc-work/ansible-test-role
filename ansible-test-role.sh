@@ -66,9 +66,9 @@ cat > "$ANSIBLE_INVENTORY" <<END
 $machine_ip ansible_user=vagrant ansible_ssh_private_key_file=${machine_private_key}
 END
 
-# execute the virtual playbook
-ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-args "-o StrictHostKeyChecking=no" \
-  -i "$ANSIBLE_INVENTORY" "$@" /dev/stdin <<END
+# create temporary playbook.yml
+ansible_playbook=$(mktemp)
+cat > "$ansible_playbook" <<END
 ---
 - hosts: ${machine_ip}
   become: yes
@@ -78,14 +78,7 @@ ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-
 END
 
 ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-args "-o StrictHostKeyChecking=no" \
-  -i "$ANSIBLE_INVENTORY" "$@" /dev/stdin <<END
----
-- hosts: ${machine_ip}
-  become: yes
-
-  roles:
-    - ${role_name}
-END
+  -i "$ANSIBLE_INVENTORY" "$ansible_playbook"
 
 # clean up
 rm -f "$ANSIBLE_INVENTORY"
