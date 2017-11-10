@@ -2,7 +2,7 @@
 
 A tool to run and verify a single ansible role in a temporary virtual machine to verify it's correctness.
 
-Default vagrant image is Debian 9 64 bit (`debian/jessie64`).
+Default vagrant image is Debian 8 64 bit (`debian/jessie64`).
 
 ### What is it doing exactly?
 
