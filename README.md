@@ -57,6 +57,10 @@ These are defined in the script and thus overridden:
 - [#3: check role existence before starting the vagrant machine](https://github.com/thomas-mc-work/ansible-test-role/issues/3)
 - [#4: add system tests](https://github.com/thomas-mc-work/ansible-test-role/issues/4)
 
+## Alternatives
+
+The only thing I know is [Molecule](https://molecule.readthedocs.io/en/latest/). It seems to be a very more profound solution. One big drawback is the big footprint of configuration files that it creates in your project (and thus in your SCM).
+
 ## Thanks to
 
 … [Konstantin Suvorov aka @berlic](https://github.com/berlic) for [this inspiration](https://stackoverflow.com/a/38419466/2854723)
