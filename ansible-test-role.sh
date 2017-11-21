@@ -15,15 +15,14 @@ HELP
   exit
 fi
 
-role_name=$1
+role_path=$1
+role_name=$(basename "$role_path")
 shift
 
 echo "Trying to apply role '${role_name}' ..."
 
-# define the overridable ansible roles path
-if [ -z "${ANSIBLE_ROLES_PATH:+x}" ]; then
-    export ANSIBLE_ROLES_PATH="$(pwd)/roles"
-fi
+# define the ansible roles path
+export ANSIBLE_ROLES_PATH=$(dirname $(realpath "$role_path"))
 
 # prepare vagrant environment
 export VAGRANT_CWD=$(mktemp -d)
