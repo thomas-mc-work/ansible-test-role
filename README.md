@@ -59,7 +59,9 @@ These are defined in the script and thus overridden:
 
 ## Alternatives
 
-The only thing I know is [Molecule](https://molecule.readthedocs.io/en/latest/). It seems to be a very more profound solution. One big drawback is the big footprint of configuration files that it creates in your project (and thus in your SCM).
+- [Molecule](https://molecule.readthedocs.io/en/latest/): It seems to be a very more profound solution. One big drawback is the big footprint of configuration files that it creates in your project (and thus in your SCM).
+- [RoleSpec](https://github.com/nickjj/rolespec): focuses on Travis-CI integration
+- [ansible-test](https://github.com/nylas/ansible-test): (didn't work on my machine: Xubuntu 16.04.3)
 
 ## Thanks to
 
