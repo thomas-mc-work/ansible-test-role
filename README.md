@@ -39,23 +39,16 @@ Simply `cd` into your ansible folder and then run:
 
 You can define several environment variables which are used by [vagrant](https://www.vagrantup.com/docs/other/environmental-variables.html) or [ansible](http://docs.ansible.com/ansible/latest/config.html) like these:
 
-- `ANSIBLE_ROLES_PATH`: Allows you to invoke test from any folder in the filesystem. Good for CI
 - `VAGRANT_DEFAULT_PROVIDER`: The latest version of vagrant (2.0 as of 2017-10-27) isn't able to work with virtualbox version ≥ 5.2 – so you can easily switch to e.g. `libvirt` herewith
 
 ### Forbidden environment variables
 
 These are defined in the script and thus overridden:
 
+- `ANSIBLE_ROLES_PATH`
 - `ANSIBLE_RETRY_FILES_ENABLED`
 - `ANSIBLE_INVENTORY`
 - `VAGRANT_CWD`
-
-## Roadmap
-
-- [#1: enable command completion](https://github.com/thomas-mc-work/ansible-test-role/issues/1)
-- [#2: enabled definition of a custom vagrant image](https://github.com/thomas-mc-work/ansible-test-role/issues/2)
-- [#3: check role existence before starting the vagrant machine](https://github.com/thomas-mc-work/ansible-test-role/issues/3)
-- [#4: add system tests](https://github.com/thomas-mc-work/ansible-test-role/issues/4)
 
 ## Alternatives
 
