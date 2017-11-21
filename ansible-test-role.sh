@@ -60,8 +60,8 @@ echo "machine has booted: ${machine_ip}"
 export ANSIBLE_RETRY_FILES_ENABLED="False"
 
 # create temporary ansible inventory file
-export ANSIBLE_INVENTORY=$(mktemp)
-cat > "$ANSIBLE_INVENTORY" <<END
+ansible_inventory=$(mktemp)
+cat > "$ansible_inventory" <<END
 [vagrant]
 $machine_ip ansible_port=${machine_ssh_port} ansible_user=vagrant ansible_ssh_private_key_file=${machine_private_key}
 END
@@ -79,10 +79,10 @@ END
 
 # execute the virtual playbook
 ansible-playbook --ssh-extra-args "-o UserKnownHostsFile=/dev/null" --ssh-extra-args "-o StrictHostKeyChecking=no" \
-  -i "$ANSIBLE_INVENTORY" "$ansible_playbook"
+  -i "$ansible_inventory" "$ansible_playbook"
 
 # clean up
-rm -f "$ANSIBLE_INVENTORY" "$ansible_playbook"
+rm -f "$ansible_inventory" "$ansible_playbook"
 
 vagrant destroy -f
 sc=$?
