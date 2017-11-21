@@ -1,0 +1,8 @@
+---
+  
+- name: create folder
+  file:
+    dest: /data
+    state: directory
+- name: execute shell command - this will always change
+  shell: uname -a
