@@ -32,8 +32,7 @@ Simply `cd` into your ansible folder and then run:
 
     ansible-test-role <role-name> [ansible-playbook options]
 
-`ansible-playbook options`:
-: These can be [valid `ansible-playbook` options](http://docs.ansible.com/ansible/latest/ansible-playbook.html) which wil be passed through.
+`ansible-playbook options`: These can be [valid `ansible-playbook` options](http://docs.ansible.com/ansible/latest/ansible-playbook.html) which wil be passed through.
 
 ### Allowed environment variables
 
