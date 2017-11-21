@@ -21,6 +21,12 @@ shift
 
 echo "Trying to apply role '${role_name}' ..."
 
+# verify readability of the role
+if [ ! -r "$role_path" ]; then
+    echo "Failed to read the role: ${role_path}"
+    exit 4
+fi
+
 # define the ansible roles path
 export ANSIBLE_ROLES_PATH=$(dirname $(realpath "$role_path"))
 
