@@ -1,0 +1,6 @@
+---
+  
+- name: create folder
+  file:
+    dest: /data
+    state: directory
