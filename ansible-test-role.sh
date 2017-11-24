@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
-# Test an ansible role solely.
+#!/usr/bin/env sh
+# Test an ansible role isolated.
+#
+# Further reading: Ansible Configuration - Common Options
+# https://docs.ansible.com/ansible/2.4/config.html
 set -o nounset   ## set -u : exit the script if you try to use an uninitialised variable
 
 if [ $# -lt 1 ]; then
