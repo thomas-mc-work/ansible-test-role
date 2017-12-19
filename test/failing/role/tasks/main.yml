@@ -1,0 +1,7 @@
+---
+  
+- name: create folder
+  file:
+    dest: /etc/fstab
+    # this is always a file, not a directory
+    state: directory
