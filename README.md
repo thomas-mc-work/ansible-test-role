@@ -1,15 +1,17 @@
-# ansible-test-role
+# ansible-role + ansible-test-role
 
-A tool to run and verify a single ansible role in a temporary virtual machine to verify it's correctness.
+**ansible-role**: Run an ansible role in an isolated disposable environment (a temporary vagrant virtual machine)
+
+**ansible-test-role**: Test a single ansible role in a temporary virtual machine to verify it's correctness.
 
 Default vagrant image is Debian 8 64 bit (`debian/jessie64`).
 
 ### What is it doing exactly?
 
-1. Prepare and start a temporary vagrant machine
+1. Reuse or prepare a temporary vagrant machine and start it
 2. Create a temporary ansible inventory based on the vagrant machine data
 3. Run `ansible-playbook` with a temporary playbook only containing the role passed to the script as a parameter
-4. tear down the vagrant machine and remove all temporary files
+4. Optional: Tear down the vagrant machine and remove all temporary files
 
 ## Requirements
 
@@ -21,16 +23,21 @@ Default vagrant image is Debian 8 64 bit (`debian/jessie64`).
 
 ## Setup
 
-    sudo curl -O "/usr/local/bin/ansible-test-role" "https://github.com/..."
-    sudo chmod +x "/usr/local/bin/ansible-test-role"
+    sudo curl -Lo "/usr/local/bin/ansible-role" "https://raw.githubusercontent.com/thomas-mc-work/ansible-test-role/master/ansible-role.sh"
+    sudo curl -Lo "/usr/local/bin/ansible-test-role" "https://raw.githubusercontent.com/thomas-mc-work/ansible-test-role/master/ansible-test-role.sh"
+    sudo chmod +x "/usr/local/bin/ansible-role" "/usr/local/bin/ansible-test-role"
 
-You could also replace the target to your personal bin folder (`$HOME/bin`).
+The target folder `/usr/local/bin` could also be replaced by your personal bin folder (`$HOME/bin`).
 
 ## Usage
 
-Simply `cd` into your ansible folder and then run:
+**ansible-role:**
 
-    ansible-test-role <role-name> [ansible-playbook options]
+    ansible-role <role-path> [ansible-playbook options]
+
+**ansible-test-role:**
+    
+    ansible-test-role <role-path> [ansible-playbook options]
 
 `ansible-playbook options`: These can be [valid `ansible-playbook` options](http://docs.ansible.com/ansible/latest/ansible-playbook.html) which wil be passed through.
 
@@ -45,7 +52,6 @@ You can define several environment variables which are used by [vagrant](https:/
 These are defined in the script and thus overridden:
 
 - `ANSIBLE_ROLES_PATH`
-- `ANSIBLE_RETRY_FILES_ENABLED`
 - `ANSIBLE_INVENTORY`
 - `VAGRANT_CWD`
 
