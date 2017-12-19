@@ -63,13 +63,13 @@ if [ ! -r "$role_path" ]; then
     exit 2
 fi
 
-ansible-role.sh "$role_path"
+ansible-role "$role_path"
 sc=$?
 
 # optional: verify idempotency
 if [ $check_idempotence -eq 1 ]; then
     ansible_output=$(mktemp)
-    ansible-role.sh "$role_path" | tee "$ansible_output"
+    ansible-role "$role_path" | tee "$ansible_output"
     if ! grep -qE "ok=.+changed=0.+unreachable=.+failed=0" $ansible_output; then
         echo "idempotence check failed!"
         sc=20
@@ -77,6 +77,6 @@ if [ $check_idempotence -eq 1 ]; then
     rm -f "$ansible_output"
 fi
 
-ansible-role.sh -c "$role_path"
+ansible-role -c "$role_path"
 
 exit $sc
